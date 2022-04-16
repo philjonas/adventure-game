@@ -11,19 +11,6 @@ Engine::Engine()
 		"Simple Game Engine",
 		sf::Style::Default);
 
-	// define the level with an array of tile indices
-	const int level[] =
-	{
-		0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-		0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 3, 3,
-		0, 1, 0, 0, 2, 0, 3, 0, 3, 0, 1, 1, 1, 0, 0, 0,
-		0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-		0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-		2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
-	};
-	
 	map.load(
 		"assets/tileset.png", 
 		sf::Vector2u(Data::SPRITE_SIDE, Data::SPRITE_SIDE),
@@ -90,8 +77,16 @@ void Engine::input()
 	{
 		m_Hero.moveDown();
 	}
-	sf::Vector2i p = m_Hero.getNextGridSpace();
-	std::cout << p.x << " " << p.y << std::endl;
+	sf::Vector2i nextGridSpace = m_Hero.getNextGridSpace();
+	std::cout << nextGridSpace.x << " " << nextGridSpace.y << std::endl;
+	int nextIndex = nextGridSpace.y * Data::WIDTH_IN_SPRITES + nextGridSpace.x;
+	std::cout << nextIndex << std::endl;
+	if(nextIndex < 0 || nextIndex > Data::SPRITES_PER_SCREEN - 1){
+		return;
+	}
+	if(level[nextIndex] != 0){ // it is an obstacle
+		m_Hero.stopMoving();
+	}
 
 }
 

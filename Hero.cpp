@@ -105,3 +105,27 @@ void Hero::setSpriteDirection(float elapsedTime) {
 	int x = Data::SPRITE_SIDE * frame;
 	m_Sprite.setTextureRect(sf::IntRect(x, y, Data::SPRITE_SIDE, Data::SPRITE_SIDE));
 }
+
+sf::Vector2i Hero::getGridPosition(){
+	return sf::Vector2i(
+		m_Position.x / Data::SPRITE_SIDE,
+		m_Position.y / Data::SPRITE_SIDE
+	);
+}
+
+sf::Vector2i Hero::getNextGridSpace(){
+	sf::Vector2i currPos = getGridPosition();
+	switch (direction)
+	{
+	case north:
+		return sf::Vector2i(currPos.x, currPos.y - 1);
+	case south:
+		return sf::Vector2i(currPos.x, currPos.y + 1);
+	case east:
+		return sf::Vector2i(currPos.x + 1, currPos.y);
+	case west:
+		return sf::Vector2i(currPos.x - 1, currPos.y);
+	default:
+		return currPos;
+	}
+}

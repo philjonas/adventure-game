@@ -1,8 +1,8 @@
 # adventure-game
 
 ## TODO:
- - [x] resizable sprites based on window width
- - [ ] tile-based moving character with simple collision detection
+ - [x] tilemaps
+ - [ ] moving character with simple collision detection
  - [x] simple sprite animation
  
 

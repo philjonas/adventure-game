@@ -90,7 +90,8 @@ void Engine::input()
 	{
 		m_Hero.moveDown();
 	}
-
+	sf::Vector2i p = m_Hero.getNextGridSpace();
+	std::cout << p.x << " " << p.y << std::endl;
 
 }
 

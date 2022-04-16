@@ -4,6 +4,7 @@
 
 class Hero
 {
+	const static int MAX_FRAME = 1;
 	sf::Vector2f m_Position;
 	sf::Sprite m_Sprite;
 	sf::Texture m_Texture;
@@ -11,9 +12,7 @@ class Hero
 	int frame;
 	float timer;
 	float framerate;
-	const static int MAX_FRAME = 1;
 	bool isMoving;
-
 	// Hero's speed in pixels per second
 	float m_Speed;
 
@@ -30,4 +29,6 @@ public:
 	void moveDown();
 	void stopMoving();
 	void update(float elapsedTime);
+	sf::Vector2i getGridPosition();
+	sf::Vector2i getNextGridSpace();
 };

@@ -8,7 +8,7 @@
  - [x] resizable text (by default)
  
 
- let's change this to a brand new repo later
+Map created using: https://www.mapeditor.org
 
  ## To run this on a MacOS:
  - `brew install sfml`

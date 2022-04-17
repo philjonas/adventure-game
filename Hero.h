@@ -15,14 +15,11 @@ class Hero
 	bool isMoving;
 	// Hero's speed in pixels per second
 	float m_Speed;
-
 	bool isInBounds(sf::Vector2f pos);
 	void setSpriteDirection(float elapsedTime);
 public:
 	Hero();
-
 	sf::Sprite getSprite();
-
 	void moveLeft();
 	void moveRight();
 	void moveUp();

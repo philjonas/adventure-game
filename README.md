@@ -2,8 +2,10 @@
 
 ## TODO:
  - [x] tilemaps
- - [ ] moving character with simple collision detection
+ - [x] moving character with simple collision detection
  - [x] simple sprite animation
+ - [ ] when resizing window, keep aspect ratio
+ - [ ] resizable text
  
 
  let's change this to a brand new repo later

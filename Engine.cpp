@@ -82,10 +82,8 @@ void Engine::input()
 	if(nextIndex < 0 || nextIndex > Data::SPRITES_PER_SCREEN - 1){
 		return;
 	}
-	std::cout << nextIndex << " " << level[nextIndex] <<std::endl;
 	if(level[nextIndex] != 0 && m_Hero.checkCollision(nextGridSpace)){ // it is an obstacle
 		m_Hero.stopMoving();
-		std::cout << "m_Hero.stopMoving();" << std::endl;
 	}
 
 }

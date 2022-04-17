@@ -19,6 +19,11 @@ Engine::Engine()
 		Data::HEIGHT_IN_SPRITES
 		);
 
+	font.loadFromFile("assets/Roboto-Regular.ttf");
+	hud.setFont(font);
+	hud.setCharacterSize(Data::SPRITE_SIDE);
+	hud.setFillColor(sf::Color::Black);
+	hud.setString("Adventure Game");
 }
 
 void Engine::start()
@@ -38,8 +43,6 @@ void Engine::start()
 			if (event.type == sf::Event::Resized)
 			{
 				keepAspectRatio();
-				// float fontSize = getFontSize(windowHeight);
-				// hud.setCharacterSize((unsigned int)fontSize);
 			}
 				
 		}
@@ -108,6 +111,7 @@ void Engine::draw()
 
 	m_Window.draw(map);
 	m_Window.draw(m_Hero.getSprite());
+	m_Window.draw(hud);
 
 	m_Window.display();
 }
@@ -130,9 +134,4 @@ void Engine::keepAspectRatio()
 	}
 	// set the new size
 	m_Window.setSize(size);
-}
-
-float Engine::getFontSize(unsigned int windowHeight)
-{
-	return ((windowHeight / 200.0f) + 1) * 10;
 }

@@ -9,8 +9,9 @@ class Engine
 	sf::RenderWindow m_Window;
 	TileMap map;
 	Hero m_Hero;
+	sf::Text hud;
+	sf::Font font;
 	void keepAspectRatio();
-	float getFontSize(unsigned int windowHeight);
 	void input();
 	void update(float dtAsSeconds);
 	void draw();

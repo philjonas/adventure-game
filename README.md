@@ -4,8 +4,8 @@
  - [x] tilemaps
  - [x] moving character with simple collision detection
  - [x] simple sprite animation
- - [ ] when resizing window, keep aspect ratio
- - [ ] resizable text
+ - [x] when resizing window, keep aspect ratio
+ - [x] resizable text (by default)
  
 
  let's change this to a brand new repo later

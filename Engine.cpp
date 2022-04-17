@@ -31,8 +31,17 @@ void Engine::start()
 		sf::Event event;
 		while (m_Window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed){
 				m_Window.close();
+			}
+
+			if (event.type == sf::Event::Resized)
+			{
+				keepAspectRatio();
+				// float fontSize = getFontSize(windowHeight);
+				// hud.setCharacterSize((unsigned int)fontSize);
+			}
+				
 		}
 		// Restart the clock and save the elapsed time into dt
 		sf::Time dt = clock.restart();
@@ -101,4 +110,29 @@ void Engine::draw()
 	m_Window.draw(m_Hero.getSprite());
 
 	m_Window.display();
+}
+
+void Engine::keepAspectRatio()
+{
+	// https://stackoverflow.com/questions/63796551/how-to-keep-the-windows-aspect-ratio-while-resizing-the-window-in-sfml-2-5
+	sf::Vector2u size = m_Window.getSize();
+	// setup my wanted aspect ratio
+	float  heightRatio = Data::HEIGHT_IN_PIXELS / (float)Data::WIDTH_IN_PIXELS;
+	float  widthRatio = Data::WIDTH_IN_PIXELS / (float)Data::HEIGHT_IN_PIXELS;
+	// adapt the resized window to my wanted aspect ratio
+	if (size.y * widthRatio <= size.x)
+	{
+		size.x = size.y * widthRatio;
+	}
+	else if (size.x * heightRatio <= size.y)
+	{
+		size.y = size.x * heightRatio;
+	}
+	// set the new size
+	m_Window.setSize(size);
+}
+
+float Engine::getFontSize(unsigned int windowHeight)
+{
+	return ((windowHeight / 200.0f) + 1) * 10;
 }

@@ -8,7 +8,7 @@ Engine::Engine()
 	resolution.y = Data::SPRITE_SIDE * Data::HEIGHT_IN_SPRITES;
 
 	m_Window.create(sf::VideoMode(resolution.x, resolution.y),
-		"Simple Game Engine",
+		"Adventure Game",
 		sf::Style::Default);
 
 	map.load(

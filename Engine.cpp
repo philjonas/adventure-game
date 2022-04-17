@@ -78,14 +78,14 @@ void Engine::input()
 		m_Hero.moveDown();
 	}
 	sf::Vector2i nextGridSpace = m_Hero.getNextGridSpace();
-	std::cout << nextGridSpace.x << " " << nextGridSpace.y << std::endl;
 	int nextIndex = nextGridSpace.y * Data::WIDTH_IN_SPRITES + nextGridSpace.x;
-	std::cout << nextIndex << std::endl;
 	if(nextIndex < 0 || nextIndex > Data::SPRITES_PER_SCREEN - 1){
 		return;
 	}
-	if(level[nextIndex] != 0){ // it is an obstacle
+	std::cout << nextIndex << " " << level[nextIndex] <<std::endl;
+	if(level[nextIndex] != 0 && m_Hero.checkCollision(nextGridSpace)){ // it is an obstacle
 		m_Hero.stopMoving();
+		std::cout << "m_Hero.stopMoving();" << std::endl;
 	}
 
 }

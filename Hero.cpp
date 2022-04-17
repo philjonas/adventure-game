@@ -108,8 +108,8 @@ void Hero::setSpriteDirection(float elapsedTime) {
 
 sf::Vector2i Hero::getGridPosition(){
 	return sf::Vector2i(
-		m_Position.x / Data::SPRITE_SIDE,
-		m_Position.y / Data::SPRITE_SIDE
+		(m_Position.x + Data::HALF_SPRITE) / Data::SPRITE_SIDE,
+		(m_Position.y + Data::HALF_SPRITE) / Data::SPRITE_SIDE
 	);
 }
 
@@ -128,4 +128,12 @@ sf::Vector2i Hero::getNextGridSpace(){
 	default:
 		return currPos;
 	}
+}
+
+bool Hero::checkCollision(sf::Vector2i otherObj) {
+    return m_Sprite.getGlobalBounds().intersects(
+		sf::FloatRect(
+		sf::Vector2f(otherObj.x * Data::SPRITE_SIDE, otherObj.y * Data::SPRITE_SIDE),
+		sf::Vector2f(Data::SPRITE_SIDE, Data::SPRITE_SIDE)
+		));
 }

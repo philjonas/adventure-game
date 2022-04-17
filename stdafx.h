@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
 
 // TODO: reference additional headers your program requires here
 #include <SFML/Graphics.hpp>

@@ -31,4 +31,5 @@ public:
 	void update(float elapsedTime);
 	sf::Vector2i getGridPosition();
 	sf::Vector2i getNextGridSpace();
+	bool checkCollision(sf::Vector2i otherObj);
 };
